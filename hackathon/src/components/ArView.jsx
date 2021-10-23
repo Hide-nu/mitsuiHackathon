@@ -1,29 +1,33 @@
 import { useState, useEffect} from "react"
 
 export const ArView = () => {
-  const [accelerationX, setAccelerationX] = useState(0);
-  const [accelerationY, setAccelerationY] = useState(0);
-  const [accelerationZ, setAccelerationZ] = useState(0);
-  console.log(!DeviceMotionEvent.requestPermission)
+  const [alpha, setAlpha] = useState(0);
+  const [beta, setBeta] = useState(0);
+  const [gamma, setGamma] = useState(0);
   const deviceMotionRequest = () => {
-    if (DeviceMotionEvent.requestPermission) {
-      DeviceMotionEvent.requestPermission()
+    if (window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === 'function') {
+      DeviceOrientationEvent.requestPermission()
         .then(permissionState => {
           if (permissionState === 'granted') {
-            window.addEventListener("devicemotion", (event) => {
+            window.addEventListener("deviceorientation", (event) => {
               if (!event.accelerationIncludingGravity) {
                 alert('event.accelerationIncludingGravity is null');
                 return;
               }
-              setAccelerationX(event.accelerationIncludingGravity.x)
-              setAccelerationY(event.accelerationIncludingGravity.y)
-              setAccelerationZ(event.accelerationIncludingGravity.z)
+              setAlpha(event.alpha)
+              setBeta(event.beta)
+              setGamma(event.gamma)
             })
           }
         })
         .catch(console.error);
     } else {
-      alert('DeviceMotionEvent.requestPermission is not found')
+      window.addEventListener("deviceorientation", (event) => {
+        setAlpha(event.alpha)
+        setBeta(event.beta)
+        setGamma(event.gamma)
+      })
+  
     }
   }
   useEffect(() => {
@@ -32,9 +36,9 @@ export const ArView = () => {
   return (
     <div>
       <div>{!DeviceMotionEvent.requestPermission}</div>
-      <span>{accelerationX}</span>
-      <span>{accelerationY}</span>
-      <span>{accelerationZ}</span>
+      <span>{alpha}</span>
+      <span>{beta}</span>
+      <span>{gamma}</span>
     </div>
   )
 }
