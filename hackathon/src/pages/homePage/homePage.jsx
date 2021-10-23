@@ -6,11 +6,13 @@ import Typography from '@mui/material/Typography';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import { withStyles } from '@mui/styles';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import { setPoint } from '../../utils/setPoint';
+import { useAuthContext } from '../../context/AuthContext';
 
 const theme = createTheme({
 });
 
-const homePage = () => {
+const HomePage = () => {
   const GradientText = withStyles({
     root: {
       fontSize: 40,
@@ -32,6 +34,8 @@ const homePage = () => {
     fontWeight: 600,
     padding: '12px 20px',
   });
+
+  const { user } = useAuthContext();
 
 
   return (
@@ -91,7 +95,7 @@ const homePage = () => {
           </GradientText>
         </Box>
         <Box sx={{ marginTop: 'auto', marginBottom: '80px' }}>
-          <GradientButton fullWidth endIcon={<PhotoCamera />}>
+          <GradientButton onClick={() => setPoint(user.uid, 5)} fullWidth endIcon={<PhotoCamera />}>
             カメラを起動してシュート
           </GradientButton>
         </Box>
@@ -100,4 +104,4 @@ const homePage = () => {
   );
 }
 
-export default homePage;
+export default HomePage;
