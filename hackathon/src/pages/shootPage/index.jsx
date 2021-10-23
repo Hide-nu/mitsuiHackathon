@@ -1,29 +1,43 @@
-import Webcam from "react-webcam";
 import 'aframe';
 import {Entity, Scene} from 'aframe-react';
-import { ArView } from "../../components/ArView";
+import { useEffect } from 'react';
 
-const Shoot = () => {
+const ShootPage = () => {
+  useEffect(() => {
+    console.log("called useEffect")
+    const text = document.getElementById('text');
+        text.addEventListener('gps-entity-place-update-positon', (event) => {
+          console.log("called textevent")
+          document.getElementById('debug').textContent = `あと${event.detail.distance}m`;
+          text.setAttribute('value', text.getAttribute('distanceMsg') + ' left');
+        });
 
-  const videoConstraints = {
-    facingMode: { exact: "environment" }
-  };
+  },[])
   return (
-    <div className="relative w-full h-screen">
-      <ArView />
-      <Webcam className="absolute w-full h-full top-0 left-0"/>
-      <Scene>
-        <Entity
-          geometry={{ primitive: 'box' }}
-          material={{ color: 'red' }}
-          position={{ x: 0, y: 0, z: -5 }}
-          rotation={{ x: 0, y: 45, z: 45 }}
-          scale={{ x: 2, y: 2, z: 2 }}
-          className="bg-transparent"
-        />
-      </Scene>
+    <div>
+    <div id="debug" className="fixed z-50 bg-white p-4 top-0 left-0 block"/>
+      <a-scene
+      vr-mode-ui="enabled: false"
+      embedded
+      arjs="sourceType: webcam; debugUIEnabled: false;"
+    >
+      <a-box
+        material="color: red"
+        gps-entity-place="latitude: <add-your-latitude>; longitude: <add-your-longitude>;"
+        scale="15 15 15"
+      ></a-box>
+      <a-text
+        id="text"
+        value=""
+        look-at="[gps-camera]"
+        scale="30 30 30"
+        position="0 55 0"
+        gps-entity-place="latitude: <add-your-latitude>; longitude: <add-your-longitude>;"
+      ></a-text>
+      <a-camera gps-camera rotation-reader> </a-camera>
+    </a-scene>
     </div>
   )
 }
 
-export default Shoot;
+export default ShootPage;
