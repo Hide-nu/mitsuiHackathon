@@ -1,11 +1,11 @@
 import './App.css';
 import homePage from './pages/homePage/homePage';
-import loginPage from './pages/loginPage/loginPage';
-import signUpPage from './pages/signUpPage/signUpPage';
+import LoginPage from './pages/loginPage/loginPage';
+import SignUpPage from './pages/signUpPage/signUpPage';
 import { AuthProvider } from './context/AuthContext';
 import { BrowserRouter } from 'react-router-dom';
-import PrivateRoute from './components/PrivateRoute';
-import PublicRoute from './components/PublicRoute';
+import PrivateRoute from './routes/PrivateRoute';
+import PublicRoute from './routes/PublicRoute';
 
 function App() {
   return (
@@ -15,8 +15,8 @@ function App() {
           <div style={{ margin: '2em' }}>
             <BrowserRouter>
               <PrivateRoute exact path="/" component={homePage} />
-              <PublicRoute path="/signup" component={signUpPage} />
-              <PublicRoute path="/login" component={loginPage} />
+              <PublicRoute path="/signup" component={SignUpPage} />
+              <PublicRoute path="/login" component={LoginPage} />
             </BrowserRouter>
           </div>
         </AuthProvider>
