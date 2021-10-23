@@ -13,9 +13,9 @@ const ShootPage = () => {
   const error = useCallback((e) => console.error(e),[]);
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(success, error)
     window.AFRAME.registerComponent('gpsPosition', {
       init: function(){
+        navigator.geolocation.getCurrentPosition(success, error)
         console.log("called");
         const gpsPosition = this.el.sceneEl;
         gpsPosition.addEventListener('gps-camera-update-positon', (event) => {
