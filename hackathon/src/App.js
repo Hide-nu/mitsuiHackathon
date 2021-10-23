@@ -1,10 +1,8 @@
 import './App.css';
-import loginPage from './pages/loginPage/loginPage';
-import signUpPage from './pages/signUpPage/signUpPage';
-
+import shootPage from './pages/shootPage/index'
 function App() {
   // return loginPage();
-  return signUpPage();
+  return shootPage();
   // return (
   //   <div className="App">
   //     <header className="App-header">

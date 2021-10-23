@@ -1,22 +1,28 @@
 import 'aframe';
-import {Entity, Scene} from 'aframe-react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const ShootPage = () => {
+  const [lat, setLat] = useState(0.00);
+  const [lon, setLon] = useState(0.00);
   useEffect(() => {
-    console.log("called useEffect")
-    const text = document.getElementById('text');
-        text.addEventListener('gps-entity-place-update-positon', (event) => {
-          console.log("called textevent")
-          document.getElementById('debug').textContent = `あと${event.detail.distance}m`;
-          text.setAttribute('value', text.getAttribute('distanceMsg') + ' left');
+    window.AFRAME.registerComponent('gpsPosition', {
+      init: function(){
+        console.log("called");
+      },
+      update: function(){
+        const gpsPosition = this.el;
+        gpsPosition.addEventListener('gps-camera-update-positon', (event) => {
+          setLat(event.detail.position.latitude)
+          setLon(event.detail.position.longtitude)
         });
-
+      }
+    })
   },[])
+  console.log(lat)
   return (
     <div>
-    <div id="debug" className="fixed z-50 bg-white p-4 top-0 left-0 block"/>
-      <a-scene
+      <div>{lat} {lon} </div>
+    <a-scene
       vr-mode-ui="enabled: false"
       embedded
       arjs="sourceType: webcam; debugUIEnabled: false;"
@@ -27,8 +33,8 @@ const ShootPage = () => {
         scale="15 15 15"
       ></a-box>
       <a-text
-        id="text"
-        value=""
+        gpsPosition
+        value={lat+lon}
         look-at="[gps-camera]"
         scale="30 30 30"
         position="0 55 0"
