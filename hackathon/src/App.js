@@ -1,4 +1,5 @@
 import './App.css';
+import ShootPage from './pages/shootPage/index';
 import homePage from './pages/homePage/homePage';
 import LoginPage from './pages/loginPage/loginPage';
 import SignUpPage from './pages/signUpPage/signUpPage';
@@ -17,6 +18,7 @@ function App() {
               <PrivateRoute exact path="/" component={homePage} />
               <PublicRoute path="/signup" component={SignUpPage} />
               <PublicRoute path="/login" component={LoginPage} />
+              <PublicRoute path="/shoot" component={ShootPage} />
             </BrowserRouter>
           </div>
         </AuthProvider>
