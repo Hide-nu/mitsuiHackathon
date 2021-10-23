@@ -11,7 +11,6 @@ import PublicRoute from './routes/PublicRoute';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
         <AuthProvider>
           <div style={{ margin: '2em' }}>
             <BrowserRouter>
@@ -22,7 +21,6 @@ function App() {
             </BrowserRouter>
           </div>
         </AuthProvider>
-      </header>
     </div>
   );
 }
