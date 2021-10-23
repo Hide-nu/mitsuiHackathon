@@ -1,27 +1,28 @@
 import './App.css';
-import Webcam from "react-webcam";
-import 'aframe';
-import {Entity, Scene} from 'aframe-react';
+import loginPage from './pages/loginPage/loginPage';
+import signUpPage from './pages/signUpPage/signUpPage';
 
 function App() {
-  const videoConstraints = {
-    facingMode: { exact: "environment" }
-  };
-  return (
-    <div className="relative w-full h-screen">
-      <Webcam className="absolute w-full h-screen top-0 left-0"/>
-      <Scene>
-        <Entity
-          geometry={{ primitive: 'box' }}
-          material={{ color: 'red' }}
-          position={{ x: 0, y: 0, z: -5 }}
-          rotation={{ x: 0, y: 45, z: 45 }}
-          scale={{ x: 2, y: 2, z: 2 }}
-          className="bg-transparent"
-        />
-      </Scene>
-    </div>
-  );
+  // return loginPage();
+  return signUpPage();
+  // return (
+  //   <div className="App">
+  //     <header className="App-header">
+  //       <img src={logo} className="App-logo" alt="logo" />
+  //       <p>
+  //         Edit <code>src/App.js</code> and save to reload.
+  //       </p>
+  //       <a
+  //         className="App-link"
+  //         href="https://reactjs.org"
+  //         target="_blank"
+  //         rel="noopener noreferrer"
+  //       >
+  //         Learn React
+  //       </a>
+  //     </header>
+  //   </div>
+  // );
 }
 
 export default App;
