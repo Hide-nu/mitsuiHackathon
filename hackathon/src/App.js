@@ -1,9 +1,11 @@
 import './App.css';
-import Home from './components/Home';
-import SignUp from './components/SignUp';
-import Login from './components/Login';
+import homePage from './pages/homePage/homePage';
+import loginPage from './pages/loginPage/loginPage';
+import signUpPage from './pages/signUpPage/signUpPage';
 import { AuthProvider } from './context/AuthContext';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
+import PrivateRoute from './components/PrivateRoute';
+import PublicRoute from './components/PublicRoute';
 
 function App() {
   return (
@@ -12,9 +14,9 @@ function App() {
         <AuthProvider>
           <div style={{ margin: '2em' }}>
             <BrowserRouter>
-              <Route exact path="/" component={Home} />
-              <Route path="/signup" component={SignUp} />
-              <Route path="/login" component={Login} />
+              <PrivateRoute exact path="/" component={homePage} />
+              <PublicRoute path="/signup" component={signUpPage} />
+              <PublicRoute path="/login" component={loginPage} />
             </BrowserRouter>
           </div>
         </AuthProvider>
