@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,22 +12,31 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { auth } from '../../firebase';
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useHistory } from 'react-router-dom';
 
 const theme = createTheme();
 
-const signUpPage = () => {
-  const handleSubmit = (event) => {
+const SignUpPage = () => {
+  const history = useHistory();
+  const [error, setError] = useState('');
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const email = data.get('email')
     const password = data.get('password')
-    createUserWithEmailAndPassword(auth, email, password);
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      history.push('/');
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
+        {error && <p style={{ color: 'red' }}>{error}</p>}
         <Box
           sx={{
             marginTop: 8,
@@ -87,4 +96,4 @@ const signUpPage = () => {
   );
 }
 
-export default signUpPage;
+export default SignUpPage;
