@@ -3,7 +3,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import Link from '@mui/material/Link';
+import MuiLink from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -13,8 +13,10 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { auth } from '../../firebase';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useHistory } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-const theme = createTheme();
+const theme = createTheme({
+});
 
 const SignUpPage = () => {
   const history = useHistory();
@@ -34,8 +36,8 @@ const SignUpPage = () => {
 
   return (
     <ThemeProvider theme={theme}>
+      <CssBaseline />
       <Container component="main" maxWidth="xs">
-        <CssBaseline />
         {error && <p style={{ color: 'red' }}>{error}</p>}
         <Box
           sx={{
@@ -48,7 +50,7 @@ const SignUpPage = () => {
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="h5" sx={{ color: '#1f2037' }} >
             新規登録
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
@@ -83,15 +85,17 @@ const SignUpPage = () => {
 
             <Grid container style={{ justifyContent: 'flex-end' }} >
               <Grid item>
-                <Link href="#" variant="body2">
-                  {"新規登録"}
+                <Link to='login'>
+                  <MuiLink href="#" variant="body2">
+                    {"ログイン"}
+                  </MuiLink >
                 </Link>
               </Grid>
             </Grid>
           </Box>
         </Box>
       </Container>
-    </ThemeProvider>
+    </ThemeProvider >
   );
 }
 
