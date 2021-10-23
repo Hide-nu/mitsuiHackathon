@@ -1,31 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
-import loginPage from './pages/loginPage/loginPage';
-import signUpPage from './pages/signUpPage/signUpPage';
-import homePage from './pages/homePage/homePage'
+import homePage from './pages/homePage/homePage';
+import LoginPage from './pages/loginPage/loginPage';
+import SignUpPage from './pages/signUpPage/signUpPage';
+import { AuthProvider } from './context/AuthContext';
+import { BrowserRouter } from 'react-router-dom';
+import PrivateRoute from './routes/PrivateRoute';
+import PublicRoute from './routes/PublicRoute';
 
 function App() {
-  // return loginPage();
-  // return signUpPage();
-  return homePage();
-  // return (
-  //   <div className="App">
-  //     <header className="App-header">
-  //       <img src={logo} className="App-logo" alt="logo" />
-  //       <p>
-  //         Edit <code>src/App.js</code> and save to reload.
-  //       </p>
-  //       <a
-  //         className="App-link"
-  //         href="https://reactjs.org"
-  //         target="_blank"
-  //         rel="noopener noreferrer"
-  //       >
-  //         Learn React
-  //       </a>
-  //     </header>
-  //   </div>
-  // );
+  return (
+    <div className="App">
+      <header className="App-header">
+        <AuthProvider>
+          <div style={{ margin: '2em' }}>
+            <BrowserRouter>
+              <PrivateRoute exact path="/" component={homePage} />
+              <PublicRoute path="/signup" component={SignUpPage} />
+              <PublicRoute path="/login" component={LoginPage} />
+            </BrowserRouter>
+          </div>
+        </AuthProvider>
+      </header>
+    </div>
+  );
 }
 
 export default App;

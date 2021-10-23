@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,23 +12,35 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { auth } from '../../firebase';
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useHistory } from 'react-router-dom';
+
 
 const theme = createTheme();
 
-const loginPage = () => {
-  const handleSubmit = (event) => {
+const LoginPage = () => {
+  const history = useHistory();
+  const [error, setError] = useState('');
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+
+    const email = data.get('email')
+    const password = data.get('password')
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      history.push('/');
+    } catch (error) {
+      console.log(error);
+      setError(error.message);
+    }
   };
 
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
+        {error && <p style={{ color: 'red' }}>{error}</p>}
         <CssBaseline />
         <Box
           sx={{
@@ -96,4 +108,4 @@ const loginPage = () => {
   );
 }
 
-export default loginPage;
+export default LoginPage;
