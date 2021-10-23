@@ -61,19 +61,20 @@ const homePage = () => {
         <Typography sx={{ fontSize: 16, color: '#525260', fontWeight: 600, alignSelf: 'flex-start', paddingRight: 4, paddingLeft: 4 }}>
           遊び方
         </Typography>
-        <Typography sx={{ fontSize: 14, color: '#525260', fontWeight: 600, alignSelf: 'flex-start', paddingRight: 4, paddingLeft: 4 }}>
+        <Typography sx={{ fontSize: 14, color: '#525260', fontWeight: 600, alignSelf: 'flex-start', paddingRight: 4, paddingLeft: 4, textAlign: 'left' }}>
           1, アプリ内でカメラを起動します。
         </Typography>
-        <Typography sx={{ fontSize: 14, color: '#525260', fontWeight: 600, alignSelf: 'flex-start', paddingRight: 4, paddingLeft: 4 }}>
+        <Typography sx={{ fontSize: 14, color: '#525260', fontWeight: 600, alignSelf: 'flex-start', paddingRight: 4, paddingLeft: 4, textAlign: 'left' }}>
           2, 画面に表示される的に合わせて、写真を撮ろうとしている人をshoot（シュート）します。
         </Typography>
-        <Typography sx={{ fontSize: 14, color: '#525260', fontWeight: 600, alignSelf: 'flex-start', paddingRight: 4, paddingLeft: 4, marginBottom: 8, }}>
+        <Typography sx={{ fontSize: 14, color: '#525260', fontWeight: 600, alignSelf: 'flex-start', paddingRight: 4, paddingLeft: 4, marginBottom: 4, textAlign: 'left' }}>
           3, 当たるとポイントゲット！沢山ポイントをためると素敵な景品と交換できます。
         </Typography>
         <Box
           sx={{
             paddingTop: 6,
             paddingBottom: 6,
+            marginBottom: 4,
             justifyContent: 'center',
             flexDirection: 'column',
             backgroundColor: '#ffffff',
