@@ -10,6 +10,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { ArView } from "../../components/ArView"
 
 const theme = createTheme();
 
@@ -42,6 +43,7 @@ const signUpPage = () => {
           <Typography component="h1" variant="h5">
             新規登録
           </Typography>
+          <ArView />
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
