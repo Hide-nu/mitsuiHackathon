@@ -1,34 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
+import MuiLink from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { auth } from '../../firebase';
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useHistory } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const theme = createTheme();
 
-const loginPage = () => {
-  const handleSubmit = (event) => {
+const LoginPage = () => {
+  const history = useHistory();
+  const [error, setError] = useState('');
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+
+    const email = data.get('email')
+    const password = data.get('password')
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      history.push('/');
+    } catch (error) {
+      console.log(error);
+      setError(error.message);
+    }
   };
 
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
+        {error && <p style={{ color: 'red' }}>{error}</p>}
         <CssBaseline />
         <Box
           sx={{
@@ -41,7 +53,7 @@ const loginPage = () => {
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="h5" sx={{ color: '#1f2037' }}>
             ログイン
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
@@ -68,6 +80,7 @@ const loginPage = () => {
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="ログイン情報を保存しますか"
+              sx={{ color: '#525260' }}
             />
             <Button
               type="submit"
@@ -84,8 +97,10 @@ const loginPage = () => {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
-                  {"新規登録"}
+                <Link to='/signup'>
+                  <MuiLink href="#" variant="body2">
+                    {"新規登録"}
+                  </MuiLink>
                 </Link>
               </Grid>
             </Grid>
@@ -96,4 +111,4 @@ const loginPage = () => {
   );
 }
 
-export default loginPage;
+export default LoginPage;
