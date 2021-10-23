@@ -2,10 +2,12 @@ import logo from './logo.svg';
 import './App.css';
 import loginPage from './pages/loginPage/loginPage';
 import signUpPage from './pages/signUpPage/signUpPage';
+import homePage from './pages/homePage/homePage'
 
 function App() {
   // return loginPage();
-  return signUpPage();
+  // return signUpPage();
+  return homePage();
   // return (
   //   <div className="App">
   //     <header className="App-header">
