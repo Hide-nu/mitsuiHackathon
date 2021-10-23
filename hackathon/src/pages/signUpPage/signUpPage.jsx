@@ -72,27 +72,25 @@ const SignUpPage = () => {
               id="password"
               autoComplete="current-password"
             />
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+          >
+            新規登録
+          </Button>
 
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              新規登録
-            </Button>
-
-            <Grid container style={{ justifyContent: 'flex-end' }} >
-              <Grid item>
-                <Link href="#" variant="body2">
-                  {"新規登録"}
-                </Link>
-              </Grid>
+          <Grid container style={{ justifyContent: 'flex-end' }} >
+            <Grid item>
+              <Link href="#" variant="body2">
+                {"新規登録"}
+              </Link>
             </Grid>
-          </Box>
+          </Grid>
         </Box>
-      </Container>
-    </ThemeProvider>
+      </Box>
+    </Container>
   );
 }
 
