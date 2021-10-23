@@ -2636,10 +2636,10 @@ adjust-sourcemap-loader@3.0.0:
     loader-utils "^2.0.0"
     regex-parser "^2.2.11"
 
-aframe-particle-system-component@^1.1.3:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/aframe-particle-system-component/-/aframe-particle-system-component-1.1.3.tgz#9d05732fab223e8c4392d20ae47bb29fa97067e9"
-  integrity sha512-G1qmdre8mrbLTw67jNUr79IRFXxL+Rt++LFC1enhNHFoiyqgvcLsSWJLYhoVdEpTyvM39b1VMM7RjivpW4oBsg==
+aframe-ar@^0.2.1-a:
+  version "0.2.1-a"
+  resolved "https://registry.yarnpkg.com/aframe-ar/-/aframe-ar-0.2.1-a.tgz#5f6e6a5ab9372a6dc800df0443588e3bfc20c2e6"
+  integrity sha512-JmUiIW6H2pm/uQ+ru3waM2ZBfXJ32CHh5JmLGVxhLXLIGC9dnpsLcYW2c7WPOWv5kpzSVi1pj4bckq/Y7C9dDg==
 
 aframe-react@^4.4.0:
   version "4.4.0"
@@ -4533,7 +4533,7 @@ debug@^4.0.1, debug@^4.1.0, debug@^4.1.1:
   dependencies:
     ms "2.1.2"
 
-debug@ngokevin/debug#noTimestamp:
+"debug@github:ngokevin/debug#noTimestamp":
   version "2.2.0"
   resolved "https://codeload.github.com/ngokevin/debug/tar.gz/ef5f8e66d49ce8bc64c6f282c15f8b7164409e3a"
 
@@ -4776,7 +4776,7 @@ doctrine@^3.0.0:
   dependencies:
     esutils "^2.0.2"
 
-document-register-element@dmarcos/document-register-element#8ccc532b7f3744be954574caf3072a5fd260ca90:
+"document-register-element@github:dmarcos/document-register-element#8ccc532b7f3744be954574caf3072a5fd260ca90":
   version "0.5.4"
   resolved "https://codeload.github.com/dmarcos/document-register-element/tar.gz/8ccc532b7f3744be954574caf3072a5fd260ca90"
 
@@ -10189,6 +10189,16 @@ react-dev-utils@^11.0.3:
     strip-ansi "6.0.0"
     text-table "0.2.0"
 
+react-dom@^16.0.0:
+  version "16.14.0"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.14.0.tgz#7ad838ec29a777fb3c75c3a190f661cf92ab8b89"
+  integrity sha512-1gCeQXDLoIqMgqD3IO2Ah9bnf0w9kzhwN5q4FGnHZ67hBm9yePzB5JJAIQCc8x3pFnNlwFq4RidZggNAAkzWWw==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
+    scheduler "^0.19.1"
+
 react-dom@^17.0.2:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-17.0.2.tgz#ecffb6845e3ad8dbfcdc498f0d0a939736502c23"
@@ -10313,10 +10323,28 @@ react-scripts@4.0.3:
   optionalDependencies:
     fsevents "^2.1.3"
 
+react-web-ar@^1.0.0-beta0:
+  version "1.0.0-beta0"
+  resolved "https://registry.yarnpkg.com/react-web-ar/-/react-web-ar-1.0.0-beta0.tgz#1c9589cb3cfe2f08fdc06ed0ec185b94eeb2115b"
+  integrity sha512-Thyabgi3o4mWv0bjUDL+i0kBYtmecih2Lcx2eeOnvUQ+cfAj3HoPZG3lLa7XsgK1bzcR1I2At5GZAog+r54qDQ==
+  dependencies:
+    react "^16.0.0"
+    react-dom "^16.0.0"
+    three "^0.87.1"
+
 react-webcam@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/react-webcam/-/react-webcam-6.0.0.tgz#46dd9ba44cebe6bf3cc4ea2ff09d12243900abfa"
   integrity sha512-pw7067WYnDHRjAXYXrsLeig9/AAxCFDnnaEJzZ5ep6UZoYMqF4UNRtVkeTk0LotpwqT/c8vHisn/+QodNbUsQA==
+
+react@^16.0.0:
+  version "16.14.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
+  integrity sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
 
 react@^17.0.2:
   version "17.0.2"
@@ -10851,6 +10879,14 @@ saxes@^5.0.0:
   integrity sha512-5LBh1Tls8c9xgGjw3QrMwETmTMVk0oFgvrFSvWx62llR2hcEInrKNZ2GZCCuuy2lvWrdl5jhbpeqc5hRYKFOcw==
   dependencies:
     xmlchars "^2.2.0"
+
+scheduler@^0.19.1:
+  version "0.19.1"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.19.1.tgz#4f3e2ed2c1a7d65681f4c854fa8c5a1ccb40f196"
+  integrity sha512-n/zwRWRYSUj0/3g/otKDRPMh6qv2SYMWNq85IEa8iZyAv8od9zDYpGSnpBEjNgcMNq6Scbu5KfIPxNF72R/2EA==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
 
 scheduler@^0.20.2:
   version "0.20.2"
@@ -11793,7 +11829,7 @@ text-table@0.2.0, text-table@^0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
-three-bmfont-text@dmarcos/three-bmfont-text#1babdf8507c731a18f8af3b807292e2b9740955e:
+"three-bmfont-text@github:dmarcos/three-bmfont-text#1babdf8507c731a18f8af3b807292e2b9740955e":
   version "2.3.0"
   resolved "https://codeload.github.com/dmarcos/three-bmfont-text/tar.gz/1babdf8507c731a18f8af3b807292e2b9740955e"
   dependencies:
@@ -11810,6 +11846,11 @@ three-buffer-vertex-data@dmarcos/three-buffer-vertex-data#69378fc58daf27d3b1d930
   resolved "https://codeload.github.com/dmarcos/three-buffer-vertex-data/tar.gz/69378fc58daf27d3b1d930df9f233473e4a4818c"
   dependencies:
     flatten-vertex-data "^1.0.0"
+
+three@^0.87.1:
+  version "0.87.1"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.87.1.tgz#466a34edc4543459ced9b9d7d276b65216fe2ba8"
+  integrity sha1-Rmo07cRUNFnO2bnX0na2Uhb+K6g=
 
 throat@^5.0.0:
   version "5.0.0"
