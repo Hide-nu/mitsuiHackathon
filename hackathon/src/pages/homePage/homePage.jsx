@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
+import NavigateNext from '@mui/icons-material/NavigateNext';
 import { withStyles } from '@mui/styles';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
-import { setPoint } from '../../utils/setPoint';
 import { useAuthContext } from '../../context/AuthContext';
+import { Link } from 'react-router-dom';
+import { getPoint } from '../../utils/getPoint';
 
 const theme = createTheme({
 });
@@ -36,6 +38,15 @@ const HomePage = () => {
   });
 
   const { user } = useAuthContext();
+  const [point, setPoint] = useState()
+
+  useEffect(() => {
+    async function getPt() {
+      const pt = await getPoint(user.uid)
+      setPoint(pt)
+    }
+    getPt();
+  }, [user])
 
 
   return (
@@ -74,26 +85,38 @@ const HomePage = () => {
         <Typography sx={{ fontSize: 14, color: '#525260', fontWeight: 600, alignSelf: 'flex-start', paddingRight: 4, paddingLeft: 4, marginBottom: 4, textAlign: 'left' }}>
           3, 当たるとポイントゲット！沢山ポイントをためると素敵な景品と交換できます。
         </Typography>
-        <Box
-          sx={{
-            paddingTop: 6,
-            paddingBottom: 6,
-            marginBottom: 4,
-            justifyContent: 'center',
-            flexDirection: 'column',
-            backgroundColor: '#ffffff',
-            borderRadius: 4,
-            width: '80%',
-            boxShadow: '0 3px 5px 2px rgba(82, 82, 96, .3)',
-          }}
-        >
-          <Typography sx={{ fontSize: 14, color: '#525260', fontWeight: 600, textAlign: 'center', alignSelf: 'center', marginRight: 'auto', marginLeft: 'auto' }}>
-            貯まったポイント
-          </Typography>
-          <GradientText>
-            16pt
-          </GradientText>
-        </Box>
+        <Link to={{ pathname: '/coupon', havingPoint: point }} style={{
+          textDecoration: 'none',
+          display: 'block',
+          width: '80%',
+          marginBottom: 4,
+          borderRadius: 4,
+        }}>
+          <Box
+            sx={{
+              position: 'relative',
+              marginBottom: 4,
+              paddingTop: 6,
+              paddingBottom: 6,
+              justifyContent: 'center',
+              flexDirection: 'column',
+              backgroundColor: '#ffffff',
+              borderRadius: 4,
+              width: '100%',
+              boxShadow: '0 3px 5px 2px rgba(82, 82, 96, .3)',
+            }}
+          >
+            <NavigateNext sx={{
+              position: 'absolute', right: 8, bottom: '45%',
+            }} />
+            <Typography sx={{ fontSize: 14, color: '#525260', fontWeight: 600, textAlign: 'center', alignSelf: 'center', marginRight: 'auto', marginLeft: 'auto' }}>
+              貯まったポイント
+            </Typography>
+            {point === undefined ? undefined : <GradientText>
+              {point}pt
+            </GradientText>}
+          </Box>
+        </Link>
         <Box sx={{ marginTop: 'auto', marginBottom: '80px' }}>
           <GradientButton onClick={() => setPoint(user.uid, 5)} fullWidth endIcon={<PhotoCamera />}>
             カメラを起動してシュート
