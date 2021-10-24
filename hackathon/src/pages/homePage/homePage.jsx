@@ -117,12 +117,17 @@ const HomePage = () => {
             </GradientText>}
           </Box>
         </Link>
-        <Box sx={{ marginTop: 'auto', marginBottom: '80px' }}>
-          <GradientButton onClick={() => setPoint(user.uid, 5)} fullWidth endIcon={<PhotoCamera />}>
-            カメラを起動してシュート
-          </GradientButton>
-        </Box>
+        <Link to={{ pathname: '/qr', }} style={{
+          textDecoration: 'none',
+        }}>
+          <Box sx={{ marginTop: 'auto', marginBottom: '80px' }}>
+            <GradientButton onClick={() => setPoint(user.uid, 5)} fullWidth endIcon={<PhotoCamera />}>
+              カメラを起動
+            </GradientButton>
+          </Box>
+        </Link>
       </Box>
+      <a href='./marker.html'>marker</a>
     </ThemeProvider >
   );
 }

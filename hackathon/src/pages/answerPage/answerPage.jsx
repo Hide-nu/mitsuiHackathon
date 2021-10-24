@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { withStyles } from '@mui/styles';
-import { getPoint } from '../../utils/getPoint';
+import { setPoint } from '../../utils/setPoint';
 import { useAuthContext } from '../../context/AuthContext';
-import { consumptionPoint } from '../../utils/consumptionPoint';
 import { Link } from 'react-router-dom';
 
 const theme = createTheme({
@@ -28,22 +26,11 @@ const AnswerPage = () => {
   const answer = '51';
 
   const { user } = useAuthContext();
-  const [point, setPoint] = useState()
   const [isAnswered, setIsAnswered] = useState()
   const [text, setText] = useState('')
 
-  useEffect(() => {
-    async function getPt() {
-      const pt = await getPoint(user.uid)
-      setPoint(pt)
-    }
-    getPt();
-  }, [user])
-
   const handleConsumptionPoint = async (pt) => {
-    await consumptionPoint(user.uid, point, pt)
-    const newPoint = await getPoint(user.uid)
-    setPoint(newPoint)
+    await setPoint(user.uid, pt)
   }
 
 
