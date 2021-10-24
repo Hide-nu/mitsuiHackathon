@@ -8,11 +8,12 @@ import { BrowserRouter } from 'react-router-dom';
 import PrivateRoute from './routes/PrivateRoute';
 import PublicRoute from './routes/PublicRoute';
 import couponPage from './pages/couponPage/couponPage';
+import QrPage from './pages/qrPage/index';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="App-header"/>
         <AuthProvider>
           <div style={{ margin: '2em' }}>
             <BrowserRouter>
@@ -21,10 +22,10 @@ function App() {
               <PublicRoute path="/signup" component={SignUpPage} />
               <PublicRoute path="/login" component={LoginPage} />
               <PublicRoute path="/shoot" component={ShootPage} />
+              <PublicRoute path='/qr' component={QrPage} />
             </BrowserRouter>
           </div>
         </AuthProvider>
-      </header>
     </div>
   );
 }
