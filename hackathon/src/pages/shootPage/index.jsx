@@ -3,35 +3,36 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import Button from '@mui/material/Button';
 
 const ShootPage = () => {
-  // const [lat, setLat] = useState(0.00);
-  // const [lon, setLon] = useState(0.00);
-  // const success = (pos) => {
-  //   console.log(pos)
-  //   setLat(pos.coords.latitude)
-  //   setLon(pos.coords.longitude)
-  // }
-  // const error = useCallback((e) => console.error(e),[]);
+  const [lat, setLat] = useState(0.00);
+  const [lon, setLon] = useState(0.00);
+  const success = (pos) => {
+    console.log(pos)
+    setLat(pos.coords.latitude)
+    setLon(pos.coords.longitude)
+  }
+  const error = useCallback((e) => console.error(e),[]);
 
-  // useEffect(() => {
-  //   window.AFRAME.registerComponent('gpsPosition', {
-  //     init: function(){
-  //       navigator.geolocation.getCurrentPosition(success, error);
-  //       console.log("called");
-  //       const gpsPosition = this.el.sceneEl;
-  //       gpsPosition.addEventListener('ggps-entity-place-update-positon', (event) => {
-  //         console.log("called gps init")
-  //         setLat(event.detail.position.latitude)
-  //         setLon(event.detail.position.longitude)
-  //       });
-  //     }
-  //   });
-  //   document.querySelector('a-text').setAttribute('gpsPosition', true);
-  // },[])
-  // console.log(lon)
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(success, error);
+    window.AFRAME.registerComponent('gps-position', {
+      init: function(){
+        console.log("called");
+        const gpsPosition = this.el.sceneEl;
+        gpsPosition.addEventListener('ggps-entity-place-update-positon', (event) => {
+          console.log("called gps init")
+          setLat(event.detail.position.latitude)
+          setLon(event.detail.position.longitude)
+        });
+      }
+    });
+      document.querySelector('a-text').setAttribute('gps-position', true);
+      document.querySelector('a-text').setAttribute('gps-entity-place', `latitude: ${lat}; longitude: ${lon};`)
+  },[])
+  console.log(lon)
   return (
-     <div>
-        {/*<Button color="primary" size="large">{lon} {lon}</Button>
-      <div>
+     <>
+        <Button color="primary" size="large">{lon} {lon}</Button>
       <a-scene
         vr-mode-ui="enabled: false"
         embedded
@@ -52,12 +53,10 @@ const ShootPage = () => {
         look-at="[gps-camera]"
         scale="50 50 50"
         position="0 50 0"
-        gps-entity-place={`latitude: ${lat}; longitude: ${lon};`}
       ></a-text>
         <a-camera gps-camera="minDistance:30; maxDistance:100 zoom:0.5" rotation-reader> </a-camera>
       </a-scene>
-  </div>*/}
-     </div>
+     </>
   )
 }
 
