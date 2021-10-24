@@ -65,25 +65,28 @@ const HomePage = () => {
         }}
       >
         <Typography sx={{ fontSize: 24, color: '#1f2037', fontWeight: 600 }}>
-          Shooters
+          都内でトレジャー，
         </Typography>
-        <Typography sx={{ fontSize: 20, color: '#1f2037', fontWeight: 600, marginBottom: 1, }}>
-          －シューターズ－
+        <Typography sx={{ fontSize: 24, color: '#1f2037', fontWeight: 600, paddingBottom: '30px', paddingLeft: '80px' }}>
+          取れんのじゃ？
         </Typography>
         <Typography sx={{ fontSize: 16, color: '#525260', fontWeight: 600, marginBottom: 2, paddingRight: 4, paddingLeft: 4, textAlign: 'center' }}>
-          写真を撮ろうとしている人の写真を撮って、ポイントを稼ごう！
+          ミヤシタパークに散らばったトレジャーを探し出せ！
         </Typography>
         <Typography sx={{ fontSize: 16, color: '#525260', fontWeight: 600, alignSelf: 'flex-start', paddingRight: 4, paddingLeft: 4 }}>
           遊び方
         </Typography>
         <Typography sx={{ fontSize: 14, color: '#525260', fontWeight: 600, alignSelf: 'flex-start', paddingRight: 4, paddingLeft: 4, textAlign: 'left' }}>
-          1, アプリ内でカメラを起動します。
+          1, アカウントを作成！
         </Typography>
         <Typography sx={{ fontSize: 14, color: '#525260', fontWeight: 600, alignSelf: 'flex-start', paddingRight: 4, paddingLeft: 4, textAlign: 'left' }}>
-          2, 画面に表示される的に合わせて、写真を撮ろうとしている人をshoot（シュート）します。
+          2, ミヤシタパーク内に散りばめられたトレジャーコードを探し出そう
+        </Typography>
+        <Typography sx={{ fontSize: 14, color: '#525260', fontWeight: 600, alignSelf: 'flex-start', paddingRight: 4, paddingLeft: 4, textAlign: 'left' }}>
+          3, アプリ内のカメラを起動して読み取るとクイズが出現！
         </Typography>
         <Typography sx={{ fontSize: 14, color: '#525260', fontWeight: 600, alignSelf: 'flex-start', paddingRight: 4, paddingLeft: 4, marginBottom: 4, textAlign: 'left' }}>
-          3, 当たるとポイントゲット！沢山ポイントをためると素敵な景品と交換できます。
+          4, 当たるとポイントゲット！沢山ポイントをためると素敵な景品と交換できます。
         </Typography>
         <Link to={{ pathname: '/coupon', havingPoint: point }} style={{
           textDecoration: 'none',
