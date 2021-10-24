@@ -3,6 +3,7 @@ import ShootPage from './pages/shootPage/index';
 import homePage from './pages/homePage/homePage';
 import LoginPage from './pages/loginPage/loginPage';
 import SignUpPage from './pages/signUpPage/signUpPage';
+import QrCodePage from './pages/qrCodePage/index';
 import { AuthProvider } from './context/AuthContext';
 import { BrowserRouter } from 'react-router-dom';
 import PrivateRoute from './routes/PrivateRoute';
@@ -18,6 +19,7 @@ function App() {
               <PublicRoute path="/signup" component={SignUpPage} />
               <PublicRoute path="/login" component={LoginPage} />
               <PublicRoute path="/shoot" component={ShootPage} />
+              <PublicRoute path="/qr" component={QrCodePage} />
             </BrowserRouter>
           </div>
         </AuthProvider>
