@@ -123,6 +123,7 @@ const HomePage = () => {
           </GradientButton>
         </Box>
       </Box>
+      <a href='./marker.html'>marker</a>
     </ThemeProvider >
   );
 }
