@@ -27,7 +27,6 @@ const ShootPage = () => {
       }
     });
       document.querySelector('a-text').setAttribute('gps-position', true);
-      document.querySelector('a-text').setAttribute('gps-entity-place', `latitude: ${lat}; longitude: ${lon};`)
   },[])
   console.log(lon)
   return (
@@ -40,8 +39,10 @@ const ShootPage = () => {
       >
          <a-box
           material="color: red"
-          gps-entity-place="latitude: 35.687977; longitude: 139.7723483;"
-          scale="30 30 30"
+          positoin="50 50 3"
+          depth="2" 
+          height="4" 
+          width="0.5"
         ></a-box>
         <a-box
           material="color: red"
@@ -53,6 +54,7 @@ const ShootPage = () => {
         look-at="[gps-camera]"
         scale="50 50 50"
         position="0 50 0"
+        gps-entity-place={`latitude: ${lat}; longitude: ${lon};`}
       ></a-text>
         <a-camera gps-camera="minDistance:30; maxDistance:100 zoom:0.5" rotation-reader> </a-camera>
       </a-scene>
